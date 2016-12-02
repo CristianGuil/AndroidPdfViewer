@@ -13,16 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.barteksc.pdfviewer.exception;
+package com.github.barteksc.pdfviewer.listener;
 
-@Deprecated
-public class FileNotFoundException extends RuntimeException {
+/**
+ * Implements this interface to receive events from PDFView
+ * when a page has been scrolled
+ */
+public interface OnPageScrollListener {
 
-    public FileNotFoundException(String detailMessage) {
-        super(detailMessage);
-    }
-
-    public FileNotFoundException(String detailMessage, Throwable throwable) {
-        super(detailMessage, throwable);
-    }
+    /**
+     * Called on every move while scrolling
+     *
+     * @param page current page index
+     * @param positionOffset see {@link com.github.barteksc.pdfviewer.PDFView#getPositionOffset()}
+     */
+    void onPageScrolled(int page, float positionOffset);
 }
